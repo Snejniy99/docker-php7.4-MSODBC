@@ -1,8 +1,7 @@
 # Docker php7.4 for MsSQLServer
 
 ### Sources
-
-Folder for php files `./src`
+Create a folder `./src` and add your file there
 
 ### Run docker
 Run command:
