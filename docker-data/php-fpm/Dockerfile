@@ -25,7 +25,8 @@ RUN apt-get install --no-install-recommends -y \
         libpng-dev \
         zlib1g-dev \
         libicu-dev \
-        libzip-dev
+        libzip-dev \
+        libpq-dev
 RUN apt-get install --no-install-recommends -y msodbcsql17 mssql-tools
 
 
@@ -44,3 +45,11 @@ RUN docker-php-ext-install \
         pdo_sqlsrv \
         zip \
         mcrypt
+RUN docker-php-ext-configure pgsql
+RUN docker-php-ext-install pdo pdo_pgsql
+RUN groupadd -g 1000 www
+RUN useradd -u 1000 -ms /bin/bash -g www www
+COPY --chown=www:www . /var/www/public
+USER www
+EXPOSE 9000
+CMD ["php-fpm"]

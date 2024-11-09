@@ -17,3 +17,4 @@ services:
             - './src:/var/www/public'
             - './docker-data/php-fpm/php-ini-overrides.ini:/etc/php/8.0/fpm/conf.d/99-overrides.ini'
             - './docker-data/php-fpm/openssl.cnf:/etc/ssl/openssl.cnf'
+        command: php-fpm -R
